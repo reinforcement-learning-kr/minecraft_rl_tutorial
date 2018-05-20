@@ -3,7 +3,7 @@ FROM        ubuntu:16.04
 # some code from https://github.com/tambetm/gym-mincraft/blob/master/docker/Dockerfile
 MAINTAINER  Reinforcement Learning KR <zzing0907@naver.com>
 
-# update and install basic
+# update and install basic(xserver for docker for windows compatibility)
 RUN         apt-get update && apt-get upgrade -y
 COPY        keyboard /etc/default
 RUN         apt-get install wget unzip \
