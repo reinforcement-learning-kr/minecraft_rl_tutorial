@@ -10,7 +10,7 @@ $ docker build -t malmo:0.34.0 .
 
 <br>
 
-빌드가 끝나고 아래 명령어로 Docker 이미지를 확인하면 malmo 이미지가 있는 것을 확능인 할 수 있습니다.  
+빌드가 끝나고 아래 명령어로 Docker 이미지를 확인하면 malmo 이미지가 있는 것을 확인 할 수 있습니다.  
 
 ```bash
 $ docker images  
@@ -44,7 +44,8 @@ $ docker ps
 
 #### Docker 설치    
 
-우분투에서 설치하는 것은 아래 bash 스크립트를 터미널 창에서 실행하면 됩니다. 현재 Dockerfile은 우분투만 가능하나 윈도우나 맥에 도커를 설치하시고 싶으신 경우 [이곳](https://subicura.com/2017/01/19/docker-guide-for-beginners-2.html)을 참고하세요.  
+우분투에서 설치하는 것은 아래 bash 스크립트를 터미널 창에서 실행하면 됩니다. 윈도우나 맥에 도커를 설치하시고 싶으신 경우 [이곳](https://subicura.com/2017/01/19/docker-guide-for-beginners-2.html)을 참고하세요. 
+**테스트 해본 결과  현재 Dockerfile은 우분투에서만 동작합니다** 
 
 ```bash
 $ curl -fsSL https://get.docker.com/ | sudo sh  
