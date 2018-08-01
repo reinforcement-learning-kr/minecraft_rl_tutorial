@@ -34,6 +34,10 @@ $ ./launchClient.sh
 화면이 켜지면서 Minecraft가 실행되면 설치가 완료된 것입니다.  
 <img src="https://www.dropbox.com/s/h84woj932t1r674/Screenshot%202018-07-28%2013.58.23.png?dl=1">
 
+- 주의사항:
+1. 맥북의 os버전이 HighSiera(10.13) 이상 버전이어야 합니다. 맥의 os버전을 확인하세요.
+2. Tensorflow사용자는 3.7 미만버전의 Python을 사용하세요.
+
 <br>
 
 ## 2. Malmo 설치
