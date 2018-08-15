@@ -119,7 +119,7 @@ def to_tensor(numpy_array):
     return variable
 
 
-def get_action(epsilon, q_valu, num_action):
+def get_action(epsilon, q_value, num_action):
     if np.random.rand() <= epsilon:
         return random.randrange(num_action)
     else:

@@ -52,7 +52,7 @@ def getMissionXML(summary, agent_host):
         </About>
 
         <ModSettings>
-          <!--MsPerTick>100</MsPerTick-->
+          <MsPerTick>20</MsPerTick>
           <PrioritiseOffscreenRendering>true</PrioritiseOffscreenRendering>
         </ModSettings>
 

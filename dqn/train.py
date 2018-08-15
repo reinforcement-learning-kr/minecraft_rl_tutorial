@@ -13,7 +13,7 @@ from memory import Memory
 
 if __name__=="__main__":
     env = env.MinecraftEnv()
-    env.init(allowDiscreteMovement=None, 
+    env.init(allowContinuousMovement=["move", "turn"], 
              videoResolution=[800, 600])
     env.seed(500)
     torch.manual_seed(500)
@@ -58,6 +58,7 @@ if __name__=="__main__":
 
         score = 0
         prev_life = 20
+        episode_len = 0
         while True:
             env.render(mode='rgb_array')
             steps += 1
@@ -71,8 +72,7 @@ if __name__=="__main__":
             next_state = pre_process(next_state)
             next_state = np.reshape(next_state, (84, 84, 1))
             next_history = np.append(next_state, history[:, :, :3], axis=2)
-            reward *= 0.1
-            reward += 0.1
+            reward = np.clip(reward, -1, 1)
 
             if done:
                 mask = 0
@@ -87,10 +87,9 @@ if __name__=="__main__":
             history = deepcopy(next_history)
 
             if steps > hp.initial_exploration:
-                if epsilon < 0.1:
-                    epsilon -= 0.00001
-                batch = memory.sample()
-                train_model(model, target_model, batch, optimizer)
+                if epsilon > 0.1:
+                    episode_len += 1
+                    epsilon -= 0.0001
 
             if steps % hp.update_target:
                 update_target_model(model, target_model)
@@ -98,6 +97,9 @@ if __name__=="__main__":
             if done:
                 print('episode: ', episode, 'steps: ', steps, 'epsilon: ', round(epsilon, 4), 
                       ' score: ', score)
+                batch = memory.sample()
+                for _ in range(episode_len):
+                    train_model(model, target_model, batch, optimizer)
                 break
 
 
